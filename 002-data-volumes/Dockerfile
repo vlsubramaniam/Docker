@@ -1,4 +1,4 @@
-FROM node
+FROM node:14
 
 WORKDIR /app
 
@@ -8,6 +8,12 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 80
+ARG DEFAULT_PORT=80
 
-CMD [ "node", "server.js" ]
+ENV PORT $DEFAULT_PORT
+
+EXPOSE $PORT
+
+# VOLUME [ "/app/node_modules" ]
+
+CMD [ "npm", "start" ]
