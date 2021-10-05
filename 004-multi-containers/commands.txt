@@ -1,0 +1,10 @@
+// Create network
+> docker network create goals-net
+
+// Create Images
+
+
+// Create Containers
+
+MONGO_INITDB_ROOT_USERNAME 
+MONGO_INITDB_ROOT_PASSWORD
