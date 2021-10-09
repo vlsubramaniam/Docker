@@ -1,10 +1,14 @@
 // Create network
+=========================
 > docker network create goals-net
 
 // Create Images
-
+==========================
+> docker build -t goals-node .
+> docker build -t goals-react .
 
 // Create Containers
-
-MONGO_INITDB_ROOT_USERNAME 
-MONGO_INITDB_ROOT_PASSWORD
+=========================
+> docker run --name mongodb --network goals-net mongo -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=rajan -e MONGO_INITDB_ROOT_PASSWORD=secret
+> docker run --name goals-api -v F:/Code-Practice/Docker/004-multi-containers/backend:/app -v logs:/app/logs -v /app/node_modules -e MONGODB_USERNAME=rajan --rm -p 80:80 --network goals-net goals-node 
+> docker run -v F:/Code-Practice/Docker/004-multi-containers/frontend/src:/app/src --name goals-ui --rm -p 3000:3000 -it goals-react
