@@ -1,0 +1,36 @@
+Build an image
+================
+docker build -t <name>:<tag> .
+Eg:
+docker build -t goals:latest
+
+Create a container
+===================
+docker run --name <name> --rm -p 3000:80 <image name>
+Eg:
+docker run --name goals-app --rm -p 3000:80 goals:latest
+
+--rm --> Removes the container when the container is stopped
+
+Remove an image
+=================
+docker rmi <image name>
+Eg:
+docker rmi goals:latest
+
+Remove all images
+=================
+docker image prune
+
+
+Stop a container
+====================
+docker stop <container name>
+Eg:
+docker stop goals-app
+
+Remove a container
+====================
+docker rm <container name>
+Eg:
+docker rm goals-app
